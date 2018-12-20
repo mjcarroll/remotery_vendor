@@ -63,8 +63,11 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   $<INSTALL_INTERFACE:include/Remotery>
 )
 
+add_executable(${PROJECT_NAME}_sample test/sample.c)
+target_link_libraries(${PROJECT_NAME}_sample ${PROJECT_NAME} m)
+
 install(
-  TARGETS ${PROJECT_NAME}
+  TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_sample
   EXPORT ${PROJECT_NAME}-export
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib

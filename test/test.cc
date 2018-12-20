@@ -3,24 +3,26 @@
 
 int main()
 {
-    // Create the main instance of Remotery.
-    // You need only do this once per program.
-    Remotery* rmt;
-    rmt_CreateGlobalInstance(&rmt);
+  rmtSettings * settings = rmt_Settings();
 
-    // Explicit begin/end for C
-    {
-        rmt_BeginCPUSample(LogText, 0);
-        rmt_LogText("Time me, please!");
-        rmt_EndCPUSample();
-    }
+  // Create the main instance of Remotery.
+  // You need only do this once per program.
+  Remotery * rmt;
+  rmt_CreateGlobalInstance(&rmt);
 
-    // Scoped begin/end for C++
-    {
-        rmt_ScopedCPUSample(LogText, 0);
-        rmt_LogText("Time me, too!");
-    }
+  // Explicit begin/end for C
+  {
+    rmt_BeginCPUSample(LogText, 0);
+    rmt_LogText("Time me, please!");
+    rmt_EndCPUSample();
+  }
 
-    // Destroy the main instance of Remotery.
-    rmt_DestroyGlobalInstance(rmt);
+  // Scoped begin/end for C++
+  {
+    rmt_ScopedCPUSample(LogText, 0);
+    rmt_LogText("Time me, too!");
+  }
+
+  // Destroy the main instance of Remotery.
+  rmt_DestroyGlobalInstance(rmt);
 }
